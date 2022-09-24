@@ -1,0 +1,73 @@
+﻿<Window x:Class="WpfApp4.EnterSystem"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp4"
+        mc:Ignorable="d"
+        Title="Enter" Height="450" Width="450"
+        MinHeight="450" MinWidth="450"
+        WindowStartupLocation="CenterScreen"
+        FontSize="15"
+        FontFamily="times new roman">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5">
+
+            <Button x:Name="tbEnter" Margin="2">
+                <Grid>
+                    <StackPanel>
+                        <Image Source="\MyIcon\plus.png" MaxHeight="100" MaxWidth="100"/>
+                        <Label HorizontalAlignment="Center">Add</Label>
+                        <Label HorizontalAlignment="Center">Flock</Label>
+                    </StackPanel>
+                </Grid>
+            </Button>
+
+            <Button x:Name="btExit" Margin="2">
+                <Grid>
+                    <StackPanel>
+                        <Image Source="MyIcon\plus.png" MaxHeight="100" MaxWidth="100"/>
+                        <Label HorizontalAlignment="Center">Exit</Label>
+                        <Label HorizontalAlignment="Center">Cult</Label>
+                    </StackPanel>
+                </Grid>
+            </Button>
+        </StackPanel>
+
+        <Grid Grid.Column="1">
+
+            <ListBox x:Name="lEnterContent" Margin="5" BorderThickness="1" BorderBrush="Black"/>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <Border Grid.Column="0" BorderThickness="2" BorderBrush="Black" Grid.Row="0" Grid.RowSpan="3" CornerRadius="10"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </Grid> 
+    </Grid>
+</Window>
