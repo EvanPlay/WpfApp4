@@ -57,7 +57,7 @@ namespace WpfApp4.MyForms
             try
             {
                 var newAcaunt = new DB.Acaunt();
-                newAcaunt.Name = tbName.Text;
+                newAcaunt.AcauntName = tbName.Text;
                 var image = cbImage.SelectedItem as ModelComboxImageAcaunt;
                 if (image != null)
                     newAcaunt.PathImage = image.Name;
