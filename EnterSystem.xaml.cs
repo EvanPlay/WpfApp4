@@ -22,6 +22,18 @@ namespace WpfApp4
         public EnterSystem()
         {
             InitializeComponent();
+            this.Loaded += MainWindow_Loaded();
+        }
+
+        private RoutedEventHandler MainWindow_Loaded()
+        {
+            Controllers.EnterControlController enterControlController = new Controllers.EnterControlController();
+            lEnterContent.ItemsSource.enterControlController.GetEntryControlTheLastFiveDays();
+        }
+
+        private void GoToAcaunt_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

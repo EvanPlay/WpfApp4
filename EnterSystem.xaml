@@ -64,7 +64,26 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <Border Grid.Column="0" BorderThickness="2" BorderBrush="Black" Grid.Row="0" Grid.RowSpan="3" CornerRadius="10"/>
+                        <Border Grid.Column="0" BorderThickness="2" BorderBrush="Black" Grid.Row="0" Grid.RowSpan="3" CornerRadius="10">
+                            <Image MaxHeight="50" MinHeight="49" MaxWidth="50" MinWidth="49" Source="{Binding MyPathImage}"/>
+                        </Border>
+
+                        <Label MinWidth="800" MaxWidth="1000" Margin="5" Padding="5" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="5" Content="{Binding NameEdnMessage}"/>
+
+                        <Border Grid.Column="1" MinHeight="5" Grid.Row="1" BorderThickness="1" BorderBrush="Black" Margin="5" Background="{Binding ColorBorder}"/>
+                        <Border Grid.Column="2" MinHeight="5" Grid.Row="1" BorderThickness="1" BorderBrush="Black" Margin="2" Background="{Binding ColorBorder}"/>
+                        <Border Grid.Column="3" MinHeight="5" Grid.Row="1" BorderThickness="1" BorderBrush="Black" Margin="2" Background="{Binding ColorBorder}"/>
+                        <Border Grid.Column="4" MinHeight="5" Grid.Row="1" BorderThickness="1" BorderBrush="Black" Margin="2" Background="{Binding ColorBorder}"/>
+                        <Border Grid.Column="5" MinHeight="5" Grid.Row="1" BorderThickness="1" BorderBrush="Black" Margin="2" Background="{Binding ColorBorder}"/>
+
+                        <Label Grid.Row="2" Grid.Column="1">1</Label>
+                        <Label Grid.Row="2" Grid.Column="2">2</Label>
+                        <Label Grid.Row="2" Grid.Column="3">3</Label>
+                        <Label Grid.Row="2" Grid.Column="4">4</Label>
+                        <Label Grid.Row="2" Grid.Column="5">5</Label>
+
+                        <Button Margin="5" Padding="5" HorizontalAlignment="Right" Click="GoToAcaunt_Click" VerticalAlignment="Bottom" Grid.Column="6" Grid.Row="0" Grid.RowSpan="3">in profile</Button>
+
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
