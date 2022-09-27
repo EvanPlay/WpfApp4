@@ -11,7 +11,7 @@ namespace WpfApp4.Controllers
     {
         private DB.MyContext MyContext;
         private string errorMessage = "Error \n";
-        public EnterControlController(MyContext myContext, string errorMessage)
+        public EnterControlController()
         {
             MyContext = new DB.MyContext();
         }
@@ -25,7 +25,9 @@ namespace WpfApp4.Controllers
                 {
                     var newModelAcaunting = new ModelView.EnterControlView();
 
-                    newModelAcaunting.NameEdnMessage = $"User {acauntDb.Name} => " + $"user in {GetLastEnter(acauntDb.AcauntId)}";
+                    newModelAcaunting.NameEdnMessage = acauntDb.AcauntName;
+
+                    newModelAcaunting.NameEdnMessage = $"User {acauntDb.AcauntName} => " + $"user in {GetLastEnter(acauntDb.AcauntId)}";
                     newModelAcaunting.MyPathImage = @"pack://aplication:,,,/AcauntImage/" + acauntDb.PathImage;
 
                     newModelAcaunting.ColorBorder = GetColorBorder(DateTime.Now, acauntDb.AcauntId);
@@ -51,7 +53,7 @@ namespace WpfApp4.Controllers
 
             try
             {
-                var flag = MyContext.EnterControls.Any(x => x.AcauntId == acauntId && x.DateTimeEnterControl >= dateMin && x.DateTimeEnterControl < dateMax);
+                var flag = MyContext.EnterControls.Any(x => x.AcauntId == acauntId && x.DateTimeEnterControlId >= dateMin && x.DateTimeEnterControlId < dateMax);
                 if (flag)
                     return "Green";
                 else return "Red";
@@ -66,8 +68,8 @@ namespace WpfApp4.Controllers
         {
             try
             {
-                var data = MyContext.EnterControls.Where(x => x.AcauntId == acauntId).Max(x => x.DateTimeEnterControl);
-                return data.ToLongDataString();
+                var data = MyContext.EnterControls.Where(x => x.AcauntId == acauntId).Max(x => x.DateTimeEnterControlId);
+                return data.ToLongDateString();
             }
             catch (ArgumentNullException ex)
             {

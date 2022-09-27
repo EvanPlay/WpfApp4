@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApp4.Controllers;
 
 namespace WpfApp4
 {
@@ -19,19 +20,32 @@ namespace WpfApp4
     /// </summary>
     public partial class EnterSystem : Window
     {
+        List<ModelView.EnterControlView> enters;
         public EnterSystem()
         {
             InitializeComponent();
-            this.Loaded += MainWindow_Loaded();
+            this.Loaded += MainWindow_Loaded;
         }
 
-        private RoutedEventHandler MainWindow_Loaded()
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            Controllers.EnterControlController enterControlController = new Controllers.EnterControlController();
-            lEnterContent.ItemsSource.enterControlController.GetEntryControlTheLastFiveDays();
+            var enterControlController = new Controllers.EnterControlController();
+            enters = new List<ModelView.EnterControlView>();
+            enters = enterControlController.GetEnterControlTheLastFiveDays();
+            lEnterContent.ItemsSource = enters;
+            GetCountForLabel();
         }
+        private void GetCountForLabel()
+        {
+            lSerch.Content = $"Users in list {lEnterContent.Items.Count}";
+    }
 
         private void GoToAcaunt_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void tbSerch_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }

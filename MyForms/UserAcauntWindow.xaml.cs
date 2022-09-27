@@ -42,7 +42,7 @@ namespace WpfApp4.MyForms
                 this.Title = $"Chenge profile {_Acaunt.AcauntName}";
                 imageAcaunt.Source = GetImage(_Acaunt.PathImage);
                 tbName.Text = _Acaunt.AcauntName;
-                dataGridAcauntimg.ItemSource = myContext.EnterControls.Where(x => x.AcauntId == _acauntId).OrderBy(x => x.DateTimeEnterControlId).ToList();
+                dgAcauntImage.ItemsSource = myContext.EnterControls.Where(x => x.AcauntId == _acauntId).OrderBy(x => x.DateTimeEnterControlId).ToList();
             }
             catch (Exception ex)
             {
@@ -93,12 +93,12 @@ namespace WpfApp4.MyForms
                 return;
             try
             {
-                Version enterSelect = dataGridAcauntImage.SelectedItems;
+                var enterSelect = dgAcauntImage.SelectedItem;
                 MyContext myContext = new MyContext();
-                List<DB.EnterControl> removList = new List<EnterControl>();
+                List<DB.EnterControl> removList = new List<DB.EnterControl>();
                 foreach (var row in enterSelect)
                 {
-                    DB.EnterControl enterControl = new DB.EnterControl();
+                    DB.EnterControl enterControl = row as DB.EnterControl;
 
                     if(enterControl != null)
                     {
@@ -108,7 +108,7 @@ namespace WpfApp4.MyForms
                 myContext.EnterControls.RemoveRange(removList);
                 myContext.SaveChanges();
 
-                MessageBox.Show("All delete");
+                MessageBox.Show("All flock in colt - delete");
             }
             catch (Exception ex)
             {
@@ -116,6 +116,11 @@ namespace WpfApp4.MyForms
                 isSafe = true;
                 UserAcauntWindow_Loaded(null, null);
             }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
