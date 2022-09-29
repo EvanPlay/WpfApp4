@@ -24,8 +24,4 @@
     <Resource Include="MyIcon\plus.png" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ModelView\" />
-  </ItemGroup>
-
 </Project>

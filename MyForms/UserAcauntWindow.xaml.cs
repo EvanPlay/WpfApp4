@@ -112,6 +112,10 @@ namespace WpfApp4.MyForms
             }
             catch (Exception ex)
             {
+                MessageBox.Show("Error delete data in data base \n" + ex.Message);
+            }
+            finally
+            {
                 isStartFlag = false;
                 isSafe = true;
                 UserAcauntWindow_Loaded(null, null);
@@ -120,7 +124,24 @@ namespace WpfApp4.MyForms
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
+            MyForms.ImageBox imageBox = new ImageBox();
 
+            if (imageBox.ShowDialog() == true)
+            {
+                DB.MyContext myContext = new DB.MyContext();
+                try
+                {
+                    _Acaunt.PathImage = imageBox.SelectImage.Name;
+                    myContext.Acaunts.Update(_Acaunt);
+                    myContext.SaveChanges();
+                    isSafe = true;
+                    UserAcauntWindow_Loaded(null, e);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
     }
 }
